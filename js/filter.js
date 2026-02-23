@@ -50,8 +50,6 @@ function getToggleBtn(id) {
     // Current status
     currentStatus = id;
 
-    console.log(currentStatus)
-
     selectedBtn.classList.add('btn-primary', 'text-white');
     selectedBtn.classList.remove('btn-soft', 'text-black');
 
@@ -181,14 +179,14 @@ function renderingInterview() {
                                 <p class="salary">${interview.salary}</p>
                                 <button id="applieyStatus" class="apstatus btn btn-soft">${interview.status}</button>
                                 <p class="description">${interview.description}</p>
-                                <div class="">
+                                <div>
                                     <button id="interviewBtn"
                                         class="interview-btn btn border border-green-500 text-green-500">Interview</button>
                                     <button id="rejectedBtn" class="btn border border-red-500 text-red-500 rejected-btn">Rejected</button>
                                 </div>
                             </div>
                             <div id="deleteitem">
-                                <button class="interdelete-btn btn btn-soft">Delete</button>
+                                <button class="interDelete-btn btn btn-soft">Delete</button>
                             </div>
                 
                 `
@@ -231,7 +229,7 @@ function renderingRejected() {
                             <p class="salary">${rejected.salary}</p>
                             <button id="applieyStatus" class="apstatus btn btn-soft">${rejected.status}</button>
                             <p class="description">${rejected.description}</p>
-                            <div class="">
+                            <div>
                                 <button id="interviewBtn"
                                     class="interview-btn btn border border-green-500 text-green-500">Interview</button>
                                 <button id="rejectedBtn" class="rejected-btn btn border border-red-500 text-red-500">Rejected</button>
@@ -267,13 +265,15 @@ allSectionItem.addEventListener('click',function(event){
     }
     
 })
-// deleteBtn.addEventListener('click',function(event){
+
+
+renderingSection.addEventListener('click',function(event){
     
-//     if(event.target.classList.contains('interdelete-btn')){
-//         const deleteSection = event.target.parentNode.parentNode;
-//         const parent = deleteSection.parentNode;
-//         parent.removeChild(deleteSection)
-//         console.log('Interview delete btn working',deleteSection)
-//     }
+    if(event.target.classList.contains('interDelete-btn')){
+        const deleteSection = event.target.parentNode.parentNode;
+        const parent = deleteSection.parentNode;
+        parent.removeChild(deleteSection)
+        getItemCount()
+    }
     
-// })
+})
