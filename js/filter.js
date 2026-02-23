@@ -8,6 +8,7 @@ let interviewCount = document.getElementById('interviewCount');
 let rejectedCount = document.getElementById('rejectedCount');
 
 let availableJob = document.getElementById('availableJob');
+let availableJobTotal = document.getElementById('availableJobTotal');
 let deleteBtn = document.getElementById('deleteitem');
 
 
@@ -58,13 +59,19 @@ function getToggleBtn(id) {
     if(id == 'interviewItem'){
         allSectionItem.classList.add('hidden');
         renderingSection.classList.remove('hidden');
+        availableJob.classList.remove('hidden');
+        availableJob.innerText = interviewList.length+" of";
         renderingInterview();
     }else if(id == 'allItem'){
         allSectionItem.classList.remove('hidden');
         renderingSection.classList.add('hidden');
+        availableJob.classList.add('hidden');
+        // getItemCount()
     }else if(id == 'rejectedItem'){
         allSectionItem.classList.add('hidden');
         renderingSection.classList.remove('hidden');
+        availableJob.classList.remove('hidden');
+        availableJob.innerText = rejectedList.length+" of";
         renderingRejected();
     }
 
@@ -236,7 +243,7 @@ function renderingRejected() {
                             </div>
                         </div>
                         <div id="deleteitem">
-                            <button class="delete-btn btn btn-soft">Delete</button>
+                            <button class="rejectDelete-btn delete-btn btn btn-soft">Delete</button>
                         </div>
             
             `
@@ -260,16 +267,28 @@ allSectionItem.addEventListener('click',function(event){
 
         const parent = deleteSection.parentNode;
         parent.removeChild(deleteSection)
+        availableJobTotal.innerText = allSectionItem.children.length+" Jobs";
         getItemCount()
         
     }
     
 })
 
-
+// Delete from interView Section
 renderingSection.addEventListener('click',function(event){
     
     if(event.target.classList.contains('interDelete-btn')){
+        const deleteSection = event.target.parentNode.parentNode;
+        const parent = deleteSection.parentNode;
+        parent.removeChild(deleteSection)
+        getItemCount()
+    }
+    
+})
+// Delete from Rejected Section
+renderingSection.addEventListener('click',function(event){
+    
+    if(event.target.classList.contains('rejectDelete-btn')){
         const deleteSection = event.target.parentNode.parentNode;
         const parent = deleteSection.parentNode;
         parent.removeChild(deleteSection)
