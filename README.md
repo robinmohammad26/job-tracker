@@ -20,4 +20,8 @@
 5#. What is the difference between preventDefault() and stopPropagation() methods?
 
     Answer -> 1. preventDefault() Stop all default browser behaviors.
+<<<<<<< HEAD
               2. stopPropagation() Stop DOM bubbling. Can't stop default browser behaviors.
+=======
+              2. stopPropagation() Stop DOM bubbling. Can't stop default browser behaviors.
+>>>>>>> e70f3872e2363c02aabb865e83d6cbe9df08285f
